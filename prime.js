@@ -15,18 +15,14 @@ class Prime
                 power = parseInt(Math.pow(2,n));
                 if (power == number + 1)
                 {
-                    if(number % 10 === 1){
-                        console.log(chalk.red(number) + " is a mersenne number")
-                    }
-                    
-                    console.log(number + " is a mersenne number");
+                    console.log("is a mersenne number");
                     return;
                 }
                 n++;
             }
         }
-        // When no
-        console.log(number);
+        // // When no
+        // console.log(number);
     }
 }
 

@@ -1,6 +1,9 @@
-class PrimeGen{
+import MyEvent from "../common/MyEvent";
+
+class PrimeGen extends MyEvent{
     
     constructor(limit){
+        super();
         this.generator = this.generator(limit)
         
     }
@@ -32,7 +35,7 @@ class PrimeGen{
                 return
             }
             console.log(value)
-            
+            this.emit('primeRelease', value)
         }, 1000)
         
        
@@ -41,5 +44,4 @@ class PrimeGen{
 }
 
 export default PrimeGen
-let primeGen = new PrimeGen(5)
-primeGen.printNumbers()
+
