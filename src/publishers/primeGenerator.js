@@ -1,6 +1,6 @@
-import MyEvent from "../common/MyEvent";
+import { EventEmitter } from "events"
 
-class PrimeGen extends MyEvent{
+class PrimeGen extends EventEmitter{
     
     constructor(limit){
         super();
