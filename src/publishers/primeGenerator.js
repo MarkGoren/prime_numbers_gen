@@ -1,7 +1,11 @@
 class PrimeGen{
     
-    printNumbers(limit){
-        let primes = []
+    constructor(limit){
+        this.generator = this.generator(limit)
+        
+    }
+
+    *generator(limit){
         function isPrime(num) {
             for ( var i = 2; i < num; i++ ) {
                 if ( num % i === 0 ) {
@@ -10,21 +14,32 @@ class PrimeGen{
             }
             return true;
         }
+
         for (let i=1; i<= limit; i++){
-            if (isPrime(i)){
-                primes.push(i)
+            if(isPrime(i)){
+                yield i
             }
         }
-        let i=0
-        setInterval(() => {
+    }
+    
+    printNumbers(){
+
+        const myInterval = setInterval(()=>{
             
-            if(i === primes.length) {
-                clearInterval(this)
+            var value = this.generator.next().value
+            if(!value){
+                clearInterval(myInterval)
+                return
             }
-            console.log(primes[i++])
-        }, 1000);
+            console.log(value)
+            
+        }, 1000)
+        
+       
     }
 
 }
 
 export default PrimeGen
+let primeGen = new PrimeGen(5)
+primeGen.printNumbers()
